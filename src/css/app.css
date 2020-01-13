@@ -1,0 +1,111 @@
+*, *::after, *::before {
+	-webkit-user-drag: none;
+	-webkit-app-region: no-drag;
+	cursor: default;
+}
+
+.noselect { 
+-webkit-touch-callout: none; 
+-webkit-user-select: none; 
+-khtml-user-select: none; 
+-moz-user-select: none; 
+-ms-user-select: none; 
+user-select: none; 
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+body {
+	overflow-y: hidden;
+}
+
+.header {
+    background: linear-gradient(145deg,#027be3 11%,#014a88 75%);
+}
+
+.doc-link,.doc-link:visited {
+    color: #027be3;
+    font-weight: 500;
+    text-decoration: none;
+    outline: 0;
+    border-bottom: 1px dotted currentColor;
+    vertical-align: center;
+    transition: opacity .2s;
+    white-space: nowrap
+}
+
+.doc-link:hover,.doc-link:active {
+    opacity: .8
+}
+
+.rotate90 {
+	transform: rotate(90deg);
+}
+
+.smallbtnicon {
+	font-size:.8em !important;
+}
+.smallbtnicon_half {
+	font-size:.5em;
+}
+
+.miniscroll::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+.miniscroll::-webkit-scrollbar
+{
+	width: 7px;
+	height: 7px;
+	background-color: #F5F5F5;
+}
+
+.miniscroll::-webkit-scrollbar-thumb
+{
+	background-color:#babac0;
+    border-radius:10px;
+    border:1px solid #babac0;
+}
+.q-list--dark.miniscroll::-webkit-scrollbar-thumb
+{
+	background-color:#616161 !important;
+    border-radius:10px;
+    border:1px solid #babac0;
+}
+
+.minerpanel {
+	box-shadow: 1px 0px #8888886e;
+}
+.minerlistitem {
+	padding: 5px 5px!important;
+	border-top:1px solid #8888886e;
+}
+
+.infopanel {
+	max-height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    overflow: auto;
+    padding-left: 5px;
+    padding-top: 5px;
+	cursor: text !important;
+}
+.minilog {
+    min-height: 8px;
+    padding: 2px 0px;
+    cursor: text !important;
+}
+
+.minilog .q-item__label {
+	cursor: text !important;	
+}
