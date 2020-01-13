@@ -109,3 +109,16 @@ body {
 .minilog .q-item__label {
 	cursor: text !important;	
 }
+.infotbl {
+    display: table;
+}
+.infogroup {
+    display: table-row-group;
+}
+.inforow {
+    display: table-row;
+}
+.infocol {
+    display: table-cell;
+    padding-right: 16px;
+}

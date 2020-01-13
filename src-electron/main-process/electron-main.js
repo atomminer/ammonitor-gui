@@ -9,6 +9,8 @@ const getJsonCmdTask = require('../utils/remoteapi').getJsonCmdTask;
 // global finder object...when we need it...if we need it
 var amfinder = null;
 
+const isDev = !process.env.PROD
+
 /**
  * Set `__statics` path to static files in production;
  * The reason we are setting it here is that the path needs to be evaluated at runtime
@@ -33,6 +35,7 @@ let settings = new SettingsStore({
     darkmode: true,
     windowBounds: { x: 10, y: 10, width: 800, height: 600 },
     lastconnection: "localhost",
+    metric: true,
   }
 });
 console.log("Using settings from: " + settings.path)
@@ -81,13 +84,10 @@ function createWindow () {
     x: x,
     y: y,
     useContentSize: true,
-	  icon: 'am-logo-96.png',
+	  icon: isDev ? './src/assets/am-logo-96.png' : 'img/am-logo-96.png',
     webPreferences: {
-      // keep in sync with /quasar.conf.js > electron > nodeIntegration
-      // (where its default value is "true")
-      // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
       nodeIntegration: true,
-      //devTools: false
+      devTools: isDev,
     }
   })
 
@@ -100,13 +100,10 @@ function createWindow () {
     let { x, y, width, height } = mainWindow.getBounds();
     settings.set('windowBounds', { x, y, width, height });
   });
-
-  //setTimeout(updateConnectedMiners, 1000);
 }
 
 // https://coursetro.com/posts/code/119/Working-with-Electron-Menus---Tutorial
 const isMac = process.platform === 'darwin'
-const isDev = !process.env.PROD
 const template = [
   // { role: 'appMenu' }
   ...(isMac ? [{
@@ -143,17 +140,15 @@ const template = [
           mainWindow.webContents.send('ev-darkmode-change') 
         } 
       },
+      { type: 'separator' },
       ...(isDev ? [
-  	  { type: 'separator' },
       { role: 'reload' },
       { role: 'forcereload' },
       { role: 'toggledevtools' },
-      { type: 'separator' },
+      { type: 'separator' },] : []),
       { role: 'resetzoom' },
       { role: 'zoomin' },
       { role: 'zoomout' },
-      { type: 'separator' },
-      { role: 'togglefullscreen' }] : [])
     ]
   },
   {

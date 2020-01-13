@@ -118,7 +118,10 @@ var amfn = {
 	formatTimespanFromSeconds(t) {
       var d = parseInt(t/86400); 
       return ((d > 0) ? (d +'d ') : '') +(new Date(t%86400*1000)).toUTCString().replace(/.*(\d{2}):(\d{2}):(\d{2}).*/, "$1:$2:$3");
-    }
+    },
+    tempToF(celsius) {
+		return celsius * 9 / 5 + 32;
+    },
 }
 
 export default amfn
